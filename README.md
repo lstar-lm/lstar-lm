@@ -1,5 +1,6 @@
 # L*LM
 
+[![PyPI version](https://badge.fury.io/py/lstar_lm.svg)](https://badge.fury.io/py/lstar_lm)
 
 Implementation of L*LM algorithm algorithm. See [project
 page](http://lstar-lm.github.io) for details.
