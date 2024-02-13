@@ -1,8 +1,9 @@
 [tool.poetry]
-name = "lstar_llm"
+name = "lstar_lm"
 version = "0.1.0"
-description = ""
-authors = ["Marcell Vazquez-Chanlatte <mvazquez@nissan-usa.com>"]
+description = "Algorithm for learning DFA from demonstrations, examples, and language."
+authors = ["Marcell Vazquez-Chanlatte <mvc@linux.com>",
+           "Karim Elmaaroufi <k.e@berkeley.edu>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -10,7 +11,6 @@ python = "^3.10"
 httpx = "^0.26.0"
 lstar = "^1.0.1"
 dfa-identify = "^3.10.2"
-
 
 [build-system]
 requires = ["poetry-core"]

@@ -7,7 +7,7 @@ from functools import cache, partial
 from itertools import combinations_with_replacement
 
 
-ENDPOINT = os.environ.get("ENDPOINT", "http://127.0.0.1:8080/completion")
+DEFAULT_ENDPOINT ="http://127.0.0.1:8080/completion"
 
 BASE_PROMPT = """
 {task_description}
@@ -93,7 +93,8 @@ def run_llm(positive=(),
             verbose=True,
             params=DEFAULT_PARAMS,
             allow_unsure=True,
-            llm_query_call_back=lambda *_: None):
+            llm_query_call_back=lambda *_: None,
+            endpoint=DEFAULT_ENDPOINT):
     word = yield
     base_prompt = BASE_PROMPT.format(task_description=desc)
     base_prompt = f"{base_prompt}\n{examples_to_str(positive, negative)}"
@@ -241,19 +242,21 @@ def guess_dfa(positive,
               llm_params=DEFAULT_PARAMS,
               hypothesize_rule=True,
               ce_search_depth=-1,
-              random_iters=10,    # Only used for random search.
+              random_iters=0,    # Only used for random search.
               active_queries=10,
-              use_random_search=False,
-              allow_unsure=False,
+              use_random_search=True,
+              allow_unsure=True,
               verbose=False,
               llm_query_call_back=lambda *_: None,
-              use_dfa_identify=False):
+              use_dfa_identify=True,
+              llm_endpoint=DEFAULT_ENDPOINT):
     # 1. Initialize LLM oracle.
     llm = run_llm(positive, negative, 
                   desc=desc, verbose=verbose,
                   params=llm_params,
                   allow_unsure=allow_unsure,
-                  llm_query_call_back=llm_query_call_back)
+                  llm_query_call_back=llm_query_call_back,
+                  endpoint=llm_endpoint)
     next(llm)
 
     @cache
