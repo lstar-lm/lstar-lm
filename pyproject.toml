@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "lstar_llm"
+version = "0.1.0"
+description = ""
+authors = ["Marcell Vazquez-Chanlatte <mvazquez@nissan-usa.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+httpx = "^0.26.0"
+lstar = "^1.0.1"
+dfa-identify = "^3.10.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
