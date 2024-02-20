@@ -1,4 +1,3 @@
-import os
 import httpx
 import lstar
 import random
@@ -107,7 +106,7 @@ def run_llm(positive=(),
         query = word_to_question(word)
         prompt += f"{query}\nAI:"
         data = params | {"prompt": prompt, "grammar": membership_grammar}
-        response = httpx.post(ENDPOINT, timeout=1000, json=data).json()
+        response = httpx.post(endpoint, timeout=1000, json=data).json()
         content = response["content"]
         llm_query_call_back(prompt, content)
         prompt += f"{content}\nUser:"
@@ -287,6 +286,10 @@ def guess_dfa(positive,
 
 
 if __name__ == "__main__":
+    import os
+
+    endpoint = os.environ.get('ENDPOINT', DEFAULT_ENDPOINT)
+
     alphabet = ["red", "yellow", "blue", "brown"]
     positive = {("yellow",), ("yellow", "blue"), ("blue","brown","yellow")}
     negative = {("blue",), ("blue","yellow"), ("red", "blue", "red", "brown", "red", "brown")}
@@ -313,5 +316,6 @@ Rules include:
                      alphabet=alphabet,
                      use_random_search=True,
                      allow_unsure=True,
-                     use_dfa_identify=True)
+                     use_dfa_identify=True,
+                     llm_endpoint=endpoint)
     print(lang)
