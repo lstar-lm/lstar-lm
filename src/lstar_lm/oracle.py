@@ -18,25 +18,31 @@ Additionally, by examining demonstrations of the task, we conjecture the followi
 MEMBERSHIP_PROMPT = """
 Please briefly answer the following questions using step-by-step reasoning to
 show your work. Do not answer any other question. When you arrive at a
-conclusion, please state it as FINAL_ANSWER: <yes, no>.
+conclusion, please state it as:\n\n
+Answer: <yes, no>
 """
 
-MEMBERSHIP_GRAMMAR = """
-  root ::= work answer
-  work ::= [^"FINAL_ANSWER"]+
-  answer ::= "FINAL_ANSWER: " ("yes" | "no")
+DELIM = "Answer: "
+
+MEMBERSHIP_GRAMMAR = f"""
+  root ::= work delim answer
+  delim ::= "{DELIM}"
+  work ::= [^"{DELIM}"]+
+  answer ::= ("yes" | "no")
 """
 
 MEMBERSHIP_PROMPT_IDK = """
 Please briefly answer the following questions using step-by-step reasoning to
 show your work. Do not answer any other question. When you arrive at a
-conclusion, please state it as FINAL_ANSWER: <yes, no, unsure>.
+conclusion, please state it as\n\n
+Answer: <yes, no, unsure>
 """
 
-MEMBERSHIP_GRAMMAR_IDK = """
-  root ::= work answer
-  work ::= [^"FINAL_ANSWER"]+
-  answer ::= "FINAL_ANSWER: " ("yes" | "no" | "unsure")
+MEMBERSHIP_GRAMMAR_IDK = f"""
+  root ::= work delim answer
+  delim ::= "{DELIM}"
+  work ::= [^"{DELIM}"]+
+  answer ::= ("yes" | "no" | "unsure")
 """
 
 
