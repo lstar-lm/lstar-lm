@@ -1,1 +1,1 @@
-from lstar_lm.oracle import guess_dfa
+from lstar_lm.lstar_lm import guess_dfa
