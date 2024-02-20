@@ -1,7 +1,7 @@
 import httpx
 import lstar
 import re
-from lstar_llm.common import DEFAULT_PARAMS
+from lstar_llm.llm import DEFAULT_PARAMS
 from lstar.learn import _learn_dfa, learn_dfa
 from lstar import iterative_deeping_ce
 

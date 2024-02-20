@@ -1,3 +1,5 @@
+from functools import cache
+
 import httpx
 
 
@@ -118,6 +120,33 @@ def run_llm(positive=(),
         if verbose: print(query + f"{content}\nUser:")
         word = yield parse_membership_reponse(content)
 
+
+def llm_oracle(positive=(),
+               negative=(),
+               desc="",
+               verbose=True,
+               params=DEFAULT_PARAMS,
+               allow_unsure=True,
+               llm_query_call_back=lambda *_: None,
+               endpoint=DEFAULT_ENDPOINT):
+    llm = run_llm(positive, negative, 
+                  desc=desc, verbose=verbose,
+                  params=params,
+                  allow_unsure=allow_unsure,
+                  llm_query_call_back=llm_query_call_back,
+                  endpoint=endpoint)
+    next(llm)
+
+    @cache
+    def label(word):
+        print(word)
+        if word in positive:
+            return True
+        elif word in negative:
+            return False
+        return llm.send(word)
+
+    return label
 
 
 __all__ = [ 'DEFAULT_PARAMS', 'DEFAULT_ENDPOINT', 'run_llm' ]
