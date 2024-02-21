@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lstar_lm"
-version = "0.1.1"
+version = "0.2.0"
 description = "Algorithm for learning DFA from demonstrations, examples, and language."
 authors = ["Marcell Vazquez-Chanlatte <mvc@linux.com>",
            "Karim Elmaaroufi <k.e@berkeley.edu>"]
