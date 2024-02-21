@@ -30,6 +30,7 @@ def guess_dfa(positive,
               llm_query_call_back=lambda *_: None,
               use_dfa_identify=True,
               llm_endpoint=L.DEFAULT_ENDPOINT):
+    """L*LM implementation without demonstration learning modality."""
     # 1. Initialize LLM oracle.
     label = L.llm_oracle(positive, negative, 
                        desc=desc, verbose=verbose,
@@ -83,6 +84,7 @@ def dfa_search_with_diss(*,
                          # OTHER
                          verbose=False,
               ):
+    """L*LM implementation with demonstration learning modality."""
     try:
         import diss
         from diss.concept_classes.dfa_concept import DFAConcept
