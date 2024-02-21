@@ -122,7 +122,7 @@ def analyze(search):
 endpoint = os.environ.get('ENDPOINT', DEFAULT_ENDPOINT)
 search = dfa_search_with_diss(alphabet={"red", "yellow", "blue", "green"},
                               # LLM Oracle params
-                              desc=PROMPT,
+                              task_description=PROMPT,
                               llm_endpoint=endpoint,
                               allow_unsure=True,
                               # Active dfa learner params

@@ -25,7 +25,7 @@ Rules include:
 
     """
     lang = guess_dfa(positive, negative,
-                     desc=desc,
+                     task_description=desc,
                      verbose=True,
                      ce_search_depth=3,
                      random_iters=3,
