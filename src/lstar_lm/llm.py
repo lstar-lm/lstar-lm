@@ -149,4 +149,4 @@ def llm_oracle(positive=(),
     return label
 
 
-__all__ = [ 'DEFAULT_PARAMS', 'DEFAULT_ENDPOINT', 'run_llm' ]
+__all__ = [ 'DEFAULT_PARAMS', 'DEFAULT_ENDPOINT', 'llm_oracle' ]

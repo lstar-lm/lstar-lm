@@ -2,7 +2,7 @@ from functools import cache
 
 import lstar
 
-from lstar_lm.dfa_sat_learner import guess_dfa_sat, distinguishing_query
+import lstar_lm as L
 
 
 class OutOfQueries(Exception):
@@ -39,7 +39,7 @@ def guess_dfa_lstar(positive, negative, alphabet, oracle, n_queries):
                 return word
 
         for _ in range(n_queries):
-            word = distinguishing_query(positive, negative, alphabet)
+            word = L.distinguishing_query(positive, negative, alphabet)
             if word is None:
                 continue  # wasted a query on something we can't label.
             if lang.label(word) != wrapped_oracle(word):
@@ -54,5 +54,7 @@ def guess_dfa_lstar(positive, negative, alphabet, oracle, n_queries):
             find_counter_example=find_counter_example
         ).normalize()
     except:
-        return guess_dfa_sat(positive, negative, alphabet, wrapped_oracle, 0)
+        return L.guess_dfa_sat(positive, negative, alphabet, wrapped_oracle, 0)
 
+
+__all__ = [ "guess_dfa_lstar" ]
