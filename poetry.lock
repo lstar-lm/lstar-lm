@@ -220,13 +220,13 @@ draw = ["pydot (>=1.4,<2.0)"]
 
 [[package]]
 name = "dfa-identify"
-version = "3.10.2"
+version = "3.11.0"
 description = "Python library for identifying (learning) DFAs (automata) from labeled examples."
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "dfa_identify-3.10.2-py3-none-any.whl", hash = "sha256:9e53d2eb83817eb53bf2949e93167cdb7aee5d0c757d669e6f38017c89cec099"},
-    {file = "dfa_identify-3.10.2.tar.gz", hash = "sha256:9e71641cc11fbe8b54d75ae2c0253a56fb50997bcabf1ac24cc5134d0cddb2d2"},
+    {file = "dfa_identify-3.11.0-py3-none-any.whl", hash = "sha256:ddad161295553972a6c8a6dcb59a85390be782967147aab4e9fc4228c55a027c"},
+    {file = "dfa_identify-3.11.0.tar.gz", hash = "sha256:aedc04e6c1d70d2d9d3fd9f5d9c068e9b82d22dc07a273fdc7bba4d3c71f65d5"},
 ]
 
 [package.dependencies]
@@ -566,4 +566,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "9599835361244579cf225748462f7df6609c7b43fd437f22808cb395d81c30ff"
+content-hash = "7887205b416ae0f424c2c13f3bc088951c938359658db8be9488701a716a2c35"
